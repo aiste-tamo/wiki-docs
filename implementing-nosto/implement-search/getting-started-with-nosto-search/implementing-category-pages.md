@@ -20,30 +20,57 @@ init({
     categoryComponent: categoryComponent,
     categoryCssSelector: '#MainContent',
 
-    // // There is a default implementation for categoryQuery,
-    // // so use this custom configuration only if you need to customize it:
-    // //
-    // categoryQuery: () => {
-    //     return {
-    //         name: 'serp',
-    //         products: {
-    //             categoryId: this.categoryId(),
-    //             categoryPath: this.categoryPath(),
-    //             size: defaultConfig.serpSize,
-    //             from: 0,
-    //         }
-    //     };
-    // },
-    
-    // // If you want to integrate only Categories without Search or Autocomplete,
-    // // ensure that the following entries are removed or commented out:
-    // //
-    // serpComponent,
-    // historyComponent,
-    // autocompleteComponent,
+    categoryQuery: {
+      name: 'serp',
+      products: {
+        categoryId: "1234567",
+        categoryPath: "dresses",
+        size: defaultConfig.serpSize,
+        from: 0,
+      }
+    }
 })
 ```
 {% endcode %}
+
+#### categoryQuery parameter as function&#x20;
+
+In the example above, we supply autocomplete query parameters as an object. Additionally, categoryQuery parameters can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of categoryQuery supplied as a function which provides the  product variationId by accessing the pre-defined categoryId() and categoryPath() methods from the default configuration.
+
+```javascript
+import { init } from '@nosto/preact'
+import categoryComponent from './category'
+
+init({
+    ...window.nostoTemplatesConfig,
+    inputCssSelector: '#search',
+    contentCssSelector: '#content', // or categoryCssSelector
+    categoryComponent: categoryComponent,
+    categoryCssSelector: '#MainContent',
+
+    categoryQuery: () => {
+        return {
+          name: 'serp',
+          products: {
+            categoryId: this.categoryId(),
+            categoryPath: this.categoryPath(),
+            size: defaultConfig.serpSize,
+            from: 0,
+          }
+        };
+    }
+})
+```
+
+{% hint style="info" %}
+If you want to integrate only Categories without Search or Autocomplete, ensure that the following entries are removed or commented out:&#x20;
+
+serpComponent
+
+historyComponent
+
+autocompleteComponent
+{% endhint %}
 
 ### Handling native results
 

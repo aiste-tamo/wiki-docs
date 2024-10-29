@@ -1,6 +1,6 @@
 # Implementing Search page
 
-Configuration
+### Configuration
 
 To create a search application, call the `init` function with your configuration. This will create a new Preact application that renders on the specified `contentCssSelector`. It will also bind to the input element identified by the provided `inputCssSelector` and execute a search upon form submission.
 
@@ -27,6 +27,39 @@ init({
             from: 0,
         },
     },
+})
+</code></pre>
+
+#### serpQuery parameter flavors&#x20;
+
+In the example above, we supply serp query parameters as an object. Additionally, serpQuery parameters can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of serpQuery supplied as a function which provides the product variationId by accessing the pre-defined variationId() method from the default configuration.
+
+<pre class="language-javascript" data-title="index.js"><code class="lang-javascript"><strong>import { init } from '@nosto/preact'
+</strong>
+import serpComponent from './serp'
+
+init({
+    ...window.nostoTemplatesConfig,
+    serpComponent,
+    inputCssSelector: '#search',
+    contentCssSelector: '#content',
+    serpPath: '/search',
+    serpPathRedirect: false,
+    formCssSelector: '#search-form',
+    formUnbindDelay: 1000, // 1 second
+    serpUrlMapping: {
+        query: 'q',
+    },
+    serpQuery() {
+        return {
+            name: 'serp',
+            products: {
+                size: 20,
+                from: 0,
+                variationId: this.variationId()
+            },
+        }
+    }
 })
 </code></pre>
 

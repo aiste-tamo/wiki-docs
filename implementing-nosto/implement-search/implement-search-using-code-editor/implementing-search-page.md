@@ -21,7 +21,6 @@ init({
         query: 'q',
     },
     serpQuery: {
-        name: 'serp',
         products: {
             size: 20,
             from: 0,
@@ -30,9 +29,9 @@ init({
 })
 </code></pre>
 
-#### serpQuery parameter flavors&#x20;
+#### `serpQuery` parameter flavors&#x20;
 
-In the example above, we supply serp query parameters as an object. Additionally, serpQuery parameters can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of serpQuery supplied as a function which provides the product variationId by accessing the pre-defined variationId() method from the default configuration.
+In the example above, we supply serp query parameters as an object. Additionally, the `serpQuery` parameter can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of `serpQuery` supplied as a function which provides the product variation id by accessing the pre-defined `variationId` method from the default configuration.
 
 <pre class="language-javascript" data-title="index.js"><code class="lang-javascript"><strong>import { init } from '@nosto/preact'
 </strong>
@@ -52,7 +51,6 @@ init({
     },
     serpQuery() {
         return {
-            name: 'serp',
             products: {
                 size: 20,
                 from: 0,
@@ -129,7 +127,6 @@ init({
     },
     compressUrlParameters: true,
     serpQuery: {
-        name: 'serp',
         products: {
             size: 20,
             from: 0,

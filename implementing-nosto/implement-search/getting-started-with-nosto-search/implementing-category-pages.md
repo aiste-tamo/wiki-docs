@@ -21,7 +21,6 @@ init({
     categoryCssSelector: '#MainContent',
 
     categoryQuery: {
-      name: 'serp',
       products: {
         categoryId: "1234567",
         categoryPath: "dresses",
@@ -33,9 +32,9 @@ init({
 ```
 {% endcode %}
 
-#### categoryQuery parameter as function&#x20;
+#### `categoryQuery` parameter as function&#x20;
 
-In the example above, we supply autocomplete query parameters as an object. Additionally, categoryQuery parameters can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of categoryQuery supplied as a function which provides the  product variationId by accessing the pre-defined categoryId() and categoryPath() methods from the default configuration.
+In the example above, we supply autocomplete query parameters as an object. Additionally, `categoryQuery` parameter can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of `categoryQuery` supplied as a function which provides the  product `variationId` by accessing the pre-defined `categoryId` and `categoryPath` methods from the default configuration.
 
 ```javascript
 import { init } from '@nosto/preact'
@@ -50,7 +49,6 @@ init({
 
     categoryQuery: () => {
         return {
-          name: 'serp',
           products: {
             categoryId: this.categoryId(),
             categoryPath: this.categoryPath(),
@@ -65,11 +63,11 @@ init({
 {% hint style="info" %}
 If you want to integrate only Categories without Search or Autocomplete, ensure that the following entries are removed or commented out:&#x20;
 
-serpComponent
+`serpComponent`
 
-historyComponent
+`historyComponent`
 
-autocompleteComponent
+`autocompleteComponent`
 {% endhint %}
 
 ### Handling native results

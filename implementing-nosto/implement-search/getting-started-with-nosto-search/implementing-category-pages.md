@@ -32,7 +32,7 @@ init({
 ```
 {% endcode %}
 
-#### `categoryQuery` parameter as function&#x20;
+#### Category query parameter as function&#x20;
 
 In the example above, we supply autocomplete query parameters as an object. Additionally, `categoryQuery` parameter can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of `categoryQuery` supplied as a function which provides the  product `variationId` by accessing the pre-defined `categoryId` and `categoryPath` methods from the default configuration.
 

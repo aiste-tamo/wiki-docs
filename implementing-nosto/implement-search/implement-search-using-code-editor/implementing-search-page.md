@@ -29,7 +29,7 @@ init({
 })
 </code></pre>
 
-#### `serpQuery` parameter flavors&#x20;
+#### Serp query parameter flavors&#x20;
 
 In the example above, we supply serp query parameters as an object. Additionally, the `serpQuery` parameter can also be supplied as a function. The function flavor can be used for building complex query parameters and provides access to other pre-defined configuration parameters. Section below shows an example of `serpQuery` supplied as a function which provides the product variation id by accessing the pre-defined `variationId` method from the default configuration.
 

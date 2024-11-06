@@ -139,6 +139,21 @@ init({
 
 <table><thead><tr><th width="210"></th><th width="173.33333333333331">Description</th><th>Example</th></tr></thead><tbody><tr><td><code>Pagination</code></td><td>Replaces <code>from</code> parameter with page number.</td><td>Before:<br><code>/search?products.from=20&#x26;q=shorts</code><br><br>After:<br><code>/search?page=2&#x26;q=shorts</code></td></tr><tr><td><code>Sorting</code></td><td>Returns shorter <code>sort</code> parameters.</td><td>Before:<br><code>/search?q=shorts&#x26;products.sort.0.field=price&#x26;products.sort.0.order=desc</code><br><br>After:<br><code>/search?q=shorts&#x26;products.sort=price~desc</code></td></tr><tr><td><code>Filtering</code></td><td>Compresses <code>filter</code> parameters. Multiple <code>filter</code> values are separated by a comma, which is encoded. This is because <code>filter</code> values can contain non-alphanumeric letters themselves.</td><td>Before:<br><code>/search?q=shorts&#x26;products.filter.0.field=customFields.producttype&#x26;products.filter.0.value.0=Shorts&#x26;products.filter.0.value.1=Swim&#x26;products.filter.1.field=price&#x26;products.filter.1.range.0.gte=10&#x26;products.filter.1.range.0.lte=30</code><br><br>After:<br><code>/search?q=shorts&#x26;filter.customFields.producttype=Shorts%7C%7CSwim&#x26;filter.price=10~30</code></td></tr></tbody></table>
 
+### Query parameter mapping
+
+In addition to the `compressUrlParameters` flag the `serpUrlMapping` should be used to control the mapping from URL parameter keys to paths in the internal query object. The default looks like this:
+
+```js
+serpUrlMapping: {
+  query: "q",
+  "products.filter": "filter",
+  "products.page": "page",
+  "products.sort": "sort"
+}
+```
+
+The key is the internal path in the query model and the value is the query parameter name that should be used in the URL.
+
 ## Features
 
 ### Faceted navigation

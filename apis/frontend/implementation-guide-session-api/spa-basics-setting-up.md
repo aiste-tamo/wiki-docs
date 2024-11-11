@@ -40,3 +40,5 @@ The JS comprises of three parts - the first is the "stub" (which allows API usag
 **Note:** The script and the snippet should be added as high up in the `<head>` portion of the page so the connection is initialised as soon as possible. As the script is flagged `async`, the page load isn’t delayed.
 
 **Note:** This needs to exist on every page.
+
+Alternatively to the script injection Nosto can also be used as a library dependency in your Javascript application via the following utility library [Nosto Js](https://github.com/Nosto/nosto-js)

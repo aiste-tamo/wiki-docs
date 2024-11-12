@@ -396,6 +396,55 @@ export default () => {
 ```
 {% endcode %}
 
+#### Infinite Scroll
+
+Nosto search-templates library provides a simple out-of-the-box solution to implement infinite scroll functionality. Simply wrapping your product rendering with the `<InfiniteScroll>` component is generally enough.
+
+As the user scrolls the page down, the wrapper will detect it using the `IntersectionObserver`. If it is not supported by the user's browser, a 'load more' button will be shown instead.
+
+{% code title="serp.jsx" %}
+```jsx
+function Products() {
+    const products = useAppStateSelector(state => state.response.products)
+
+    return (
+        <>
+            {products.hits.map((hit, index) => {
+                return <Product product={hit} key={hit.productId ?? index} />
+            })}
+        </>
+    )
+}
+
+function SerpInfiniteScroll() {
+    return (
+        <InfiniteScroll>
+            <Products />
+        </InfiniteScroll>
+    )
+}
+```
+{% endcode %}
+
+#### Persistent Search Cache
+
+When using infinite scroll, consider enabling persistent search cache as well. When this feature is enabled, the latest search API response will be automatically cached and stored in the browser's session storage.
+
+This improves the user experience significantly when the user navigates from a product details page back into the search results using the browser's 'back' function. The data necessary to display the products is already available, and the user will see the products immediately, without waiting for them to load again.
+
+This feature is useful for both paginated and infinite scroll, but the benefits are significantly more visible with the latter.
+
+{% code %}
+```jsx
+import { init } from '@nosto/preact'
+
+init({
+    ...otherFields,
+    persistentSearchCache: true,
+})
+```
+{% endcode %}
+
 ### Product actions
 
 Since the code editor utilizes the Preact framework, it offers significant flexibility in customizing behavior or integrating the search page with existing elements on your site. For instance, you can implement actions such as 'Add to Cart', 'Wishlist', or 'Quick View'.

@@ -434,7 +434,7 @@ This improves the user experience significantly when the user navigates from a p
 
 This feature is useful for both paginated and infinite scroll, but the benefits are significantly more visible with the latter.
 
-{% code title="init.jsx" %}
+{% code %}
 ```jsx
 import { init } from '@nosto/preact'
 

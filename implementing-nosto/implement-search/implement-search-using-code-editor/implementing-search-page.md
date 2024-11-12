@@ -400,7 +400,7 @@ export default () => {
 
 Nosto search-templates library provides a simple out-of-the-box solution to implement infinite scroll functionality. Simply wrapping your product rendering with the `<InfiniteScroll>` component is generally enough.
 
-As the user scrolls the page down, the infinite scroller will detect it using IntersectionObserver. If it is not supported by the user's browser, a 'load more' button will be shown instead.
+As the user scrolls the page down, the wrapper will detect it using the `IntersectionObserver`. If it is not supported by the user's browser, a 'load more' button will be shown instead.
 
 {% code title="serp.jsx" %}
 ```jsx
@@ -430,7 +430,7 @@ function SerpInfiniteScroll() {
 
 When using infinite scroll, consider enabling persistent search cache as well. When this feature is enabled, the latest search API response will be automatically cached and stored in the browser's session storage.
 
-This improves the UX significantly when the user navigates from a product details page back into the search results using the browser's 'back' function. The data necessary to display the products is already available, and the user will see the products immediately, without waiting for them to load again.
+This improves the user experience significantly when the user navigates from a product details page back into the search results using the browser's 'back' function. The data necessary to display the products is already available, and the user will see the products immediately, without waiting for them to load again.
 
 This feature is useful for both paginated and infinite scroll, but the benefits are significantly more visible with the latter.
 
